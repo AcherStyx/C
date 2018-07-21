@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2042
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2.打印不同类型整数", "2.打印不同类型整数.vcxproj", "{F3BE0CB9-CFD6-40D6-81B9-9986B469C047}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F3BE0CB9-CFD6-40D6-81B9-9986B469C047}.Debug|x64.ActiveCfg = Debug|x64
+		{F3BE0CB9-CFD6-40D6-81B9-9986B469C047}.Debug|x64.Build.0 = Debug|x64
+		{F3BE0CB9-CFD6-40D6-81B9-9986B469C047}.Debug|x86.ActiveCfg = Debug|Win32
+		{F3BE0CB9-CFD6-40D6-81B9-9986B469C047}.Debug|x86.Build.0 = Debug|Win32
+		{F3BE0CB9-CFD6-40D6-81B9-9986B469C047}.Release|x64.ActiveCfg = Release|x64
+		{F3BE0CB9-CFD6-40D6-81B9-9986B469C047}.Release|x64.Build.0 = Release|x64
+		{F3BE0CB9-CFD6-40D6-81B9-9986B469C047}.Release|x86.ActiveCfg = Release|Win32
+		{F3BE0CB9-CFD6-40D6-81B9-9986B469C047}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DF8EDFEE-6D05-4F15-8B49-A761B4586E08}
+	EndGlobalSection
+EndGlobal
