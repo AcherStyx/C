@@ -6,7 +6,7 @@ int main(void)
 	printf("警报:\\a\n");
 	printf("\a");
 
-	printf("退格:test\b\n");/*无效？*/
+	printf("退格:test\b\n");/*无效？只对打印机这样的设备有效*/
 
 	printf("问号:? \?");/*没啥区别？*/
 
