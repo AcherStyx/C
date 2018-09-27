@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "计算两座标点间距离", "计算两座标点间距离\计算两座标点间距离.vcxproj", "{86E9115A-99CE-4167-9705-A98310775E8E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{86E9115A-99CE-4167-9705-A98310775E8E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{86E9115A-99CE-4167-9705-A98310775E8E}.Debug|Win32.Build.0 = Debug|Win32
+		{86E9115A-99CE-4167-9705-A98310775E8E}.Release|Win32.ActiveCfg = Release|Win32
+		{86E9115A-99CE-4167-9705-A98310775E8E}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
