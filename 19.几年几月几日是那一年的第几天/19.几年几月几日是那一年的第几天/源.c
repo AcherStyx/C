@@ -8,8 +8,7 @@ int main(void)
 
 	while (getdate < 0)
 	{
-		printf("输入年份(Year/Month/date):");
-		getdate = scanf("%d/%d/%d", date, date + 1, date + 2);
+		getdate = scanf("%d-%d-%d", date, date + 1, date + 2);
 		getchar();
 	}
 
@@ -29,7 +28,7 @@ int main(void)
 
 	days += date[2];
 
-	printf("这天是这一年的第 %d 天", days);
+	printf("%d", days);
 
 
 	return 0;

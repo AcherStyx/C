@@ -1,5 +1,7 @@
 ﻿  源.c
   正在生成代码
-  All 8 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  1 of 8 functions (12.5%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
   已完成代码的生成
   19.几年几月几日是那一年的第几天.vcxproj -> E:\[工程项目]\[GitHub]\CLP\19.几年几月几日是那一年的第几天\Release\19.几年几月几日是那一年的第几天.exe
