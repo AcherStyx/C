@@ -7,7 +7,10 @@ int main(void)
 	int aint_compare;
 	long along = 0;
 	long along_compare;
+	char achar = 0;
+	char achar_compare;
 	int ok;
+	
 
 	ok = 0;
 	while (ok == 0)
@@ -38,6 +41,16 @@ int main(void)
 	}
 	along_compare = along - 1;
 	printf("The upper bound of long is:%d\nThe lower bound of long is:%d\n", along_compare, along);
+
+	ok = 0;
+	while (ok == 0)
+	{
+		achar += 1;
+		if (achar < 0)
+			ok = 1;
+	}
+	achar_compare = aint - 1;
+	printf("The upper bound of char is:%d\nThe lower bound of char is:%d\n", achar_compare, achar);
 
 	return 0;
 }
