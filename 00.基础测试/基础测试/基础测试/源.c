@@ -1,23 +1,40 @@
+#include <string.h>
+#include <stdlib.h>
+#include <time.h>
 #include <stdio.h>
-int sumf(int p[], int len);
-int  main(void)
+int floatcmp(const float * a, const float *b);
+int main(void)
 {
-	int p[10] = { 1,1,1,2,2,2,1,1,1,5 };
-	int sum;
+	srand(time(NULL));
+	float a[100];
 
-	sum = sumf(p, 10);
+	for (int i = 0; i < 100; i++)
+		a[i] = ((float)rand()) / rand();
+
+	for (int i = 0; i < 100; i++)
+	{
+		printf("%10.3f ", a[i]);
+		if ((i + 1) % 10 == 0)
+			putchar('\n');
+	}
+
+	putchar('\n');
+	qsort(a, 100, sizeof(float), floatcmp);
+
+	for (int i = 0; i < 100; i++)
+	{
+		printf("%10.3f ", a[i]);
+		if ((i + 1) % 10 == 0)
+			putchar('\n');
+	}
 
 	return 0;
-
 }
 
-int sumf(int p[], int len)
+
+int floatcmp(const float * a, const float *b)
 {
-	int sum = 0;
-	int count;
-
-	for (count = 0; count < len; count++)
-		sum += p[count];
-
-	return sum;
+	if (*a == *b)
+		return 0;
+	return *a > *b ? 1 : -1;
 }
