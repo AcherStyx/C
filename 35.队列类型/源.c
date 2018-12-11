@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include "queue.h"
 
-#define NDEBUG
 
 int main(void)
 {
@@ -51,6 +50,7 @@ int main(void)
 		}
 
 		printf("============\n");
+
 	} while (mode != 0);
 
 	

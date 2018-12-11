@@ -20,7 +20,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="List.h">
+    <ClInclude Include="queue.h">
       <Filter>源文件</Filter>
     </ClInclude>
   </ItemGroup>
