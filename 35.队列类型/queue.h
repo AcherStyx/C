@@ -6,18 +6,18 @@
 #include <iso646.h>
 #include <assert.h>
 
+#define NDEBUG
+
 #define NLENGTH 50
 #define WLENGTH 50
 
 #define ITEMMAX 1000
-//#define EMPTY 0
-//#define FULL 1
 
 typedef struct item
 {
 	char bookname[NLENGTH];
 	char writer[WLENGTH];
-} Item;
+} Item;//Item储存数据
 
 typedef struct node
 {
@@ -31,6 +31,35 @@ typedef struct queue
 	Node *last;
 	int items;
 } Queue;
+
+
+/*=========================================接口=========================================*/
+//初始化
+void Queue_initializing(Queue * queue);
+//队列空
+bool Queue_isempty(const Queue * queue);
+//队列满
+bool Queue_isfull(const Queue * queue);
+//队列项数
+int Queue_items(const Queue *queue);
+//添加项
+bool Queue_enqueue(Queue * queue, const Item item);
+//提出项
+bool Queue_dequeue(Queue * queue, Item * item);
+//清空队列
+void Queue_clean(Queue * queue);
+//打印整个队列
+bool Queue_showall(const Queue *queue);
+//打印Item到文件
+bool Queue_savetofile(const Queue * queue, FILE *file);
+//从文件读入Item，加到队列末尾
+bool Queue_readfromfile(Queue * queue, FILE *file);
+
+//打印项目
+void Queue_showitem(Item item);
+
+
+
 
 
 //初始化
@@ -91,14 +120,13 @@ bool Queue_enqueue(Queue * queue, const Item item)
 	if (Queue_isempty(queue))
 	{
 		queue->first = temp;
-		queue->last = temp;
 	}
 	else
 	{
 		queue->last->next = temp;
-		queue->last = temp;
 	}
 
+	queue->last = temp;
 	queue->items++;
 
 	return true;
@@ -150,20 +178,7 @@ void Queue_clean(Queue * queue)
 
 }
 
-void Queue_getitem(Item * item)
-{
-	printf("[Name]:\n");
-	scanf("%s", &item->bookname);
-	printf("[Writer]:\n");
-	scanf("%s", &item->writer);
-}
-
-void Queue_showitem(Item item)
-{
-	printf("[Name]:%s\n", item.bookname);
-	printf("[Writer]:%s\n", item.writer);
-}
-
+//打印整个队列
 bool Queue_showall(const Queue *queue)
 {
 	Node *current = queue->first;
@@ -172,7 +187,7 @@ bool Queue_showall(const Queue *queue)
 	while (current != NULL)
 	{
 		i++;
-		printf("NUM. %d\n", i);
+		//printf("NUM. %d\n", i);
 		Queue_showitem(current->item);
 		putchar('\n');
 
@@ -189,4 +204,83 @@ bool Queue_showall(const Queue *queue)
 		return true;
 
 	return false;//正常情况下不会运行这句
+}
+
+//打印Item到文件
+bool Queue_savetofile(const Queue * queue, FILE *file)
+{
+	Node *current = queue->first;
+	int i = 0;
+
+	if (file == NULL)
+	{
+		fprintf(stderr, "NULL\n");
+		assert(0);
+		return false;
+	}
+
+	while (current != NULL)
+	{
+		if (1 != fwrite(&current->item, sizeof(Item), 1, file))
+		{
+			fprintf(stderr, "I/O ERROR\n");
+			assert(0);
+			return false;
+		}
+		current = current->next;
+		i++;
+	}
+
+	if (i != queue->items)
+	{
+		fprintf(stderr, "NULL\n");
+		assert(0);
+		return false;
+	}
+	
+	return true;
+}
+
+//从文件读入Item，加到队列末尾
+bool Queue_readfromfile(Queue * queue, FILE *file)
+{
+	Node *current = queue->first;
+	Item temp;
+
+	if(file==NULL)
+	{
+		fprintf(stderr, "NULL\n");
+		assert(0);
+		return false;
+	}
+
+	while((int)fread(&temp, sizeof(Item), 1, file))//这里未考虑I/O错误，只当做读取失败时是到了文件结尾
+	{
+		if (false == Queue_enqueue(queue, temp))//是否添加节点成功
+		{
+			fprintf(stderr, "Enqueue failed\n");
+			assert(0);
+			return false;
+		}
+	}
+
+	return true;
+}
+
+/*===================================需要根据Item结构更改的函数===================================*/
+
+//录入项目
+void Queue_getitem(Item * item)
+{
+	printf("[Name]:\n");
+	scanf("%s", &item->bookname);
+	printf("[Writer]:\n");
+	scanf("%s", &item->writer);
+}
+
+//打印项目
+void Queue_showitem(Item item)
+{
+	printf("[Name]:%s\n", item.bookname);
+	printf("[Writer]:%s\n", item.writer);
 }

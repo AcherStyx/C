@@ -1,20 +1,24 @@
 #include <stdio.h>
 #include "queue.h"
 
+#define NDEBUG
 
 int main(void)
 {
 	Queue head;
 	Item input;
 	int mode = 1;
-	
+	FILE *data;
+
 	printf("=====队列=====\n");
 	Queue_initializing(&head);
+
+	data = fopen("queuedata", "a+b");
 
 	do
 	{
 		printf("选择操作:\n");
-		printf("1)添加项 2)删除项 3)清空队列 4)元素数目 5)打印整个队列 0)退出\n");
+		printf("1)添加项 2)删除项 3)清空队列 4)元素数目 5)打印整个队列 6)输出到文件 7)从文件输入 0)退出\n");
 		printf("选择:");
 		scanf("%d", &mode);
 		putchar('\n');
@@ -41,6 +45,16 @@ int main(void)
 			Queue_showall(&head);
 			printf("Done.\n");
 			break;
+		case 6:
+			Queue_savetofile(&head, data);
+			printf("Done.\n");
+			rewind(data);
+			break;
+		case 7:
+			Queue_readfromfile(&head, data);
+			printf("Done.\n");
+			rewind(data);
+			break;
 		default:
 			if (mode != 0)
 			{
@@ -50,7 +64,6 @@ int main(void)
 		}
 
 		printf("============\n");
-
 	} while (mode != 0);
 
 	
