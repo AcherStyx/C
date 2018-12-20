@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "二叉搜索树", "二叉搜索树.vcxproj", "{31851E75-F28B-46DF-B4B4-2F59AF455243}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{31851E75-F28B-46DF-B4B4-2F59AF455243}.Debug|x64.ActiveCfg = Debug|x64
+		{31851E75-F28B-46DF-B4B4-2F59AF455243}.Debug|x64.Build.0 = Debug|x64
+		{31851E75-F28B-46DF-B4B4-2F59AF455243}.Debug|x86.ActiveCfg = Debug|Win32
+		{31851E75-F28B-46DF-B4B4-2F59AF455243}.Debug|x86.Build.0 = Debug|Win32
+		{31851E75-F28B-46DF-B4B4-2F59AF455243}.Release|x64.ActiveCfg = Release|x64
+		{31851E75-F28B-46DF-B4B4-2F59AF455243}.Release|x64.Build.0 = Release|x64
+		{31851E75-F28B-46DF-B4B4-2F59AF455243}.Release|x86.ActiveCfg = Release|Win32
+		{31851E75-F28B-46DF-B4B4-2F59AF455243}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E31D111A-92F1-4232-B253-9BFA3F5247F4}
+	EndGlobalSection
+EndGlobal
