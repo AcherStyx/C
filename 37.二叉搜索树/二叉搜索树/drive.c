@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
+#include <time.h>
 #include "tree.h"
 #include "tools.h"
 
@@ -11,11 +12,16 @@ int main(void)
 	int mod;
 	Item input;
 
+	srand((unsigned int)time(NULL));
+
 	Tree_Initializing(&head, cmp);
+
+	
 
 	while (1)
 	{
-		printf("选择操作: \n");
+		showmenue();
+		printf("选择操作: ");
 		scanf("%d", &mod);
 		switch (mod)
 		{
@@ -25,9 +31,34 @@ int main(void)
 			printf("Done.\n");
 			break;
 		case 2://打印全队列
-
+			Tree_ShowAll(&head, showitem);
 			break;
-	
+		case 3:
+			getitem(&input);
+			switch (Tree_BSearch(&head, &input))
+			{
+			case 1:
+				printf("项目存在.\n");
+				break;
+			case 0:
+				printf("项目不存在.\n");
+				break;
+			}
+			break;
+		case 4:
+			Tree_Traverse(&head, minus);
+			printf("Done.\n");
+			break;
+		case 5:
+			for (int i = 0; i < 1000; i++)
+			{
+				input.grade = randdata(0, 500000);
+				Tree_AddItem(&head, input);
+			}
+			break;
+		case 6:
+			Tree_DeleteAll(&head);
+			break;
 		}
 		
 	}

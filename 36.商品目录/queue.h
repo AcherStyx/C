@@ -5,9 +5,13 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
-#include <stdbool.h>
+//#include <stdbool.h>
 #include <iso646.h>
 #include <assert.h>
+
+#define true 1
+#define false 0
+typedef int bool;
 
 //#define NDEBUG
 
@@ -41,6 +45,39 @@ typedef struct queue
 	int items;
 } Queue;
 /*=========================================接口=========================================*/
+//初始化
+void Queue_initializing(Queue * queue);
+//队列空
+bool Queue_isempty(const Queue * queue);
+//队列满
+bool Queue_isfull(const Queue * queue);
+//队列项数
+int Queue_items(const Queue *queue);
+//添加项_A 到末尾
+bool Queue_enqueue_A(Queue * queue, const Item item);
+//添加项_B 到指定位置 0结尾 1开头/合理的n表示加为第n项，之后的后移
+bool Queue_enqueue_B(Queue * queue, const Item item, int place);
+//提出项
+bool Queue_dequeue(Queue * queue, Item * item);
+//清空队列
+bool Queue_clean(Queue * queue);
+//打印整个队列
+bool Queue_showall(const Queue *queue, void(*showitem)(Item));
+//打印Item到文件
+bool Queue_savetofile(const Queue * queue, FILE *file);
+//从文件读入Item，加到队列末尾
+bool Queue_readfromfile(Queue * queue, FILE *file);
+//队列全排序
+void Queue_sort(Queue * queue, int(*compare)(Item a, Item b));
+//修改第n项的Item为输入的Item
+bool Queue_modify(Queue * queue, int index, Item item);
+//搜索项目,找到时返回index,没找到返回-1,第二个参数为函数指针，该函数需要在Item符合相同的条件时返回1
+int Queue_find(const Queue * queue, Item item, int(*isequal)(Item a, Item b));
+//打印第n项
+bool Queue_showitem(Queue *queue, int index, void(*showitem)(Item item));
+//删除节点
+bool Queue_delete(Queue *queue, int index);
+//跳转到某一节点处
 static Node *Queue_movetoindex(Queue *queue, int index);
 /*=========================================实现=========================================*/
 
@@ -102,7 +139,7 @@ bool Queue_enqueue_A(Queue * queue, const Item item)
 		assert(0);
 		return false;
 	}
-	
+
 	if (Queue_isempty(queue))
 	{
 		queue->first = temp;
@@ -213,7 +250,7 @@ bool Queue_dequeue(Queue * queue, Item * item)
 
 	temp = queue->first;
 	queue->first = queue->first->next;
-	
+
 	free(temp);
 
 	queue->items--;
@@ -225,12 +262,12 @@ bool Queue_dequeue(Queue * queue, Item * item)
 bool Queue_clean(Queue * queue)
 {
 	Node * next;
-	
+
 	while (queue->items > 0)
 	{
 		next = queue->first;
 		queue->first = queue->first->next;
-		
+
 		free(next);
 
 		queue->items--;
@@ -262,10 +299,10 @@ bool Queue_showall(const Queue *queue, void(*showitem)(Item))
 
 		current = current->next;
 	}
-	
+
 	if (i != queue->items)
 	{
-		fprintf(stderr,"Not match\n");
+		fprintf(stderr, "Not match\n");
 		assert(0);
 		return false;
 	}
@@ -306,7 +343,7 @@ bool Queue_savetofile(const Queue * queue, FILE *file)
 		assert(0);
 		return false;
 	}
-	
+
 	return true;
 }
 
@@ -316,14 +353,14 @@ bool Queue_readfromfile(Queue * queue, FILE *file)
 	Node *current = queue->first;
 	Item temp;
 
-	if(file==NULL)
+	if (file == NULL)
 	{
 		fprintf(stderr, "NULL\n");
 		assert(0);
 		return false;
 	}
 
-	while((int)fread(&temp, sizeof(Item), 1, file))//这里未考虑I/O错误，只当做读取失败时是到了文件结尾
+	while ((int)fread(&temp, sizeof(Item), 1, file))//这里未考虑I/O错误，只当做读取失败时是到了文件结尾
 	{
 		if (false == Queue_enqueue_A(queue, temp))//是否添加节点成功
 		{
@@ -337,7 +374,7 @@ bool Queue_readfromfile(Queue * queue, FILE *file)
 }
 
 //队列全排序
-void Queue_sort(Queue * queue, int (*compare)(Item a, Item b))//待修改为指针间排序
+void Queue_sort(Queue * queue, int(*compare)(Item a, Item b))//待修改为指针间排序
 {
 	Node *current = queue->first;
 	int i, ii;
@@ -347,7 +384,7 @@ void Queue_sort(Queue * queue, int (*compare)(Item a, Item b))//待修改为指针间排
 	{
 		for (ii = 0; ii < ((queue->items) - 1); ii++)
 		{
-			if (compare(current->item,current->next->item))//修改为排序函数,由使用传入，队列实现内不做定义
+			if (compare(current->item, current->next->item))//修改为排序函数,由使用传入，队列实现内不做定义
 			{
 				temp = current->item;
 				current->item = current->next->item;
@@ -371,7 +408,7 @@ bool Queue_modify(Queue * queue, int index, Item item)
 		assert(0);
 		return false;
 	}
-	
+
 	current->item = item;
 
 	return true;
@@ -398,7 +435,7 @@ int Queue_find(const Queue * queue, Item item, int(*isequal)(Item a, Item b))
 }
 
 //打印第n项
-bool Queue_showitem(Queue *queue, int index,void (*showitem)(Item item))
+bool Queue_showitem(Queue *queue, int index, void(*showitem)(Item item))
 {
 	Node * current = queue->first;
 	int i;
@@ -418,7 +455,7 @@ bool Queue_showitem(Queue *queue, int index,void (*showitem)(Item item))
 //删除节点
 bool Queue_delete(Queue *queue, int index)
 {
-	Node *current;
+	Node *current = NULL;
 	Node *temp;
 
 	if (index == 1)
@@ -443,10 +480,12 @@ bool Queue_delete(Queue *queue, int index)
 			return false;
 		}
 		temp = current->next;
-		current = current->next->next;
+		current->next = NULL;
 	}
 
+	
 	free(temp);
+	queue->last = current;
 	(queue->items)--;
 
 	return true;

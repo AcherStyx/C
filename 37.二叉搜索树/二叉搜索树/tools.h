@@ -16,11 +16,58 @@ void getitem(Item * item)
 	scanf("%d", &item->grade);
 }
 
-void print(Item item, int deep)
+void showitem(Item item, int deep, int side, int branch)
 {
+	int i;
+	if (deep > 0)
+		printf("     ");
+	for (i = 1; i < deep; i++)
+		printf("       ");
+	
+	switch (side)
+	{
+	case -1:
+		printf("┌ %-5d", item.grade);
+		break;
+	case 1:
+		printf("└ %-5d", item.grade);
+		break;
+	case 0:
+		printf("%-5d", item.grade);
+		break;
+	}
+
+	switch (branch)
+	{
+	case -1:
+		printf("┘\n");
+		break;
+	case 1:
+		printf("┐\n");
+		break;
+	case 0:
+		printf("┤\n");
+		break;
+	default:
+		printf("  \n");
+	}
 
 }
 
+int randdata(int down, int up)
+{
+	return rand() % (up - down) + down;
+}
+
+void minus(Item *item)
+{
+	item->grade -= 1;
+}
+
+void showmenue(void)
+{
+	printf("1.添加项目\n2.打印全部项目\n3.查找项目是否存在\n4.将函数应用于全部项目\n5.随机添加5个测试数据\n6.删除全部节点\n7.\n");
+}
 
 /*
 bool Tree_AddItem(Tree * tree, Item item)
@@ -44,7 +91,7 @@ bool Tree_AddItem(Tree * tree, Item item)
 	temp->item = item;
 
 	//找到位置并插入
-	current = Tree_Search_PreNode(tree, item, &cmp);
+	current = Tree_Find_PreNode(tree, item, &cmp);
 	if (current == NULL)
 	{
 		//错误检查
@@ -87,7 +134,7 @@ bool Tree_AddItem(Tree * tree, Item item)
 */
 
 /*
-Node *Tree_Search_PreNode(Tree * tree, Item item, int *cmp)
+Node *Tree_Find_PreNode(Tree * tree, Item item, int *cmp)
 {
 	Node *current = tree->root;
 	Node *pre = NULL;

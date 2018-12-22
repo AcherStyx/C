@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
 #include "queue.h"
+
 
 #define NDEBUG
 
@@ -9,7 +11,7 @@ int showmenue(void);
 int idequal(Item a, Item b);
 int nameequal(Item a, Item b);
 bool getitem(Item * item);
-void showitem(Item item);
+void printitem(Item item);
 void clear(void);
 int pricecmp(Item a, Item b);
 
@@ -26,11 +28,12 @@ int main(void)
 	int place;
 
 	printf("超市商品管理系统\n");
-	
+
 	//初始化
 	Queue_initializing(&head);
-	data = fopen("queuedata", "r");
+	data = fopen("queuedata", "rb");
 	Queue_readfromfile(&head, data);
+	fclose(data);
 
 	do
 	{
@@ -40,14 +43,12 @@ int main(void)
 		switch (mode)
 		{
 		case 1:
-			Queue_showall(&head, showitem);
-//			printf("Done.\n");
+			Queue_showall(&head, printitem);
+			//			printf("Done.\n");
 			break;
 		case 2:
 			printf("通过哪一项寻找商品:\n1)商品ID  2)商品名称\n输入您的选择: ");
 			scanf("%d", &mode2);
-			
-
 
 			switch (mode2)
 			{
@@ -68,7 +69,7 @@ int main(void)
 				getitem(&input);
 				Queue_modify(&head, index, input);
 				printf("修改商品信息成功!修改后的商品为: \n");
-				Queue_showitem(&head, index, showitem);
+				Queue_showitem(&head, index, printitem);
 				break;
 			case 2:
 				printf("输入需要修改的商品名称(-1退出查找): \n");
@@ -89,7 +90,7 @@ int main(void)
 				getitem(&input);
 				Queue_modify(&head, index, input);
 				printf("修改商品信息成功!修改后的商品为: \n");
-				Queue_showitem(&head, index, showitem);
+				Queue_showitem(&head, index, printitem);
 				break;
 			default:
 				printf("错误的选项\n");
@@ -100,11 +101,13 @@ int main(void)
 			getitem(&input);
 			printf("插入到的位置:");
 			scanf("%d", &place);
-			Queue_enqueue_B(&head,input, place);
+			Queue_enqueue_B(&head, input, place);
 			break;
 		case 4:
 			printf("输入要删除的商品名称(-1退出):");
-			scanf("%s", input.name);
+			clear();
+			if (NULL != fgets(input.name, NAME_LEN, stdin) || strlen(input.name) > 0)
+				input.name[strlen(input.name) - 1] = '\0';
 
 			if (strcmp(input.id, "-1") == 0)
 				break;
@@ -119,11 +122,13 @@ int main(void)
 
 			Queue_delete(&head, index);
 			printf("商品删除成功\n");
-			
+
 			break;
 		case 5:
 			printf("输入要查找的商品名称(-1退出):");
-			scanf("%s", input.name);
+			clear();
+			if (NULL != fgets(input.name, NAME_LEN, stdin) || strlen(input.name) > 0)
+				input.name[strlen(input.name) - 1] = '\0';
 
 			if (strcmp(input.id, "-1") == 0)
 				break;
@@ -136,11 +141,11 @@ int main(void)
 				break;
 			}
 
-			Queue_showitem(&head, index, showitem);
+			Queue_showitem(&head, index, printitem);
 
 			break;
 		case 6:
-			data = fopen("queuedata", "w");
+			data = fopen("queuedata", "wb");
 			Queue_savetofile(&head, data);
 			fclose(data);
 			exit(0);
@@ -149,21 +154,20 @@ int main(void)
 			Queue_sort(&head, pricecmp);
 			break;
 		case 8:
-
 			Queue_clean(&head);
 			printf("已清除所有商品信息\n");
 		default:
 			if (mode != 0)
 			{
-//				printf("错误选项\n");
+				//				printf("错误选项\n");
 
 			}
 			break;
 		}
 	} while (mode != 0);
 
-	
-	
+
+
 
 	return 0;
 }
@@ -172,7 +176,7 @@ int main(void)
 int showmenue(void)
 {
 	int mode;
-	show_again:
+show_again:
 	printf("***********************************************************************\n");
 	printf("1.显示所有商品的信息:\n");
 	printf("2.修改某个商品的信息:\n");
@@ -190,9 +194,6 @@ int showmenue(void)
 		clear();
 		goto show_again;
 	}
-
-	
-	
 	return mode;
 }
 //id相同
@@ -212,8 +213,11 @@ bool getitem(Item * item)
 	printf("商品ID: ");
 	check += scanf("%s", item->id);
 
+	clear();
 	printf("商品名称: ");
-	check += scanf("%s", item->name);
+	check += (NULL!= fgets(item->name, NAME_LEN, stdin));
+	if (strlen(item->name) > 0)
+		item->name[strlen(item->name) - 1] = '\0';
 
 	printf("商品价格: ");
 	check += scanf("%d", &item->price);
@@ -235,7 +239,7 @@ bool getitem(Item * item)
 	return false;//正常不会执行这句
 }
 //打印项目
-void showitem(Item item)
+void printitem(Item item)
 {
 	printf("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n");
 	printf("ID:%s   名称:%s  价格:%d  折扣:%.1f  数量:%d  剩余:%d\n", item.id, item.name, item.price, item.discount, item.total, item.rest);
