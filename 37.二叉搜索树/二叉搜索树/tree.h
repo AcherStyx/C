@@ -137,7 +137,7 @@ static Node **Tree_Find_PreNode(Tree * tree, Item item)
 		}
 	}
 
-	return NULL;
+	return pre;
 }
 
 /*
@@ -188,16 +188,16 @@ bool Tree_AddItem(Tree * tree, const Item item)
 */
 static void Tree_ShowAll_Recursion(Node * node, void(*ShowItem)(Item item, int deep, int side, int branch), int deep, int side)
 {
-	if (node->left != NULL)
-		Tree_ShowAll_Recursion(node->left, ShowItem, deep + 1, -1);
+	if (node->right != NULL)
+		Tree_ShowAll_Recursion(node->right, ShowItem, deep + 1, 1);
 
 	if (node->left == NULL && node->right == NULL)
 		ShowItem(node->item, deep, side, 2);
 	else
 		ShowItem(node->item, deep, side, -(node->left != NULL) + (node->right != NULL));
 
-	if (node->right != NULL)
-		Tree_ShowAll_Recursion(node->right, ShowItem, deep + 1, 1);
+	if (node->left != NULL)
+		Tree_ShowAll_Recursion(node->left, ShowItem, deep + 1, -1);
 }
 
 /*
@@ -308,6 +308,9 @@ bool Tree_DeleteItem(Tree *tree, const Item item)
 {
 	Node ** current;
 	Node ** successor;
+	Node * ptrtemp;
+	Node * rabbish;
+	Node temp;
 
 	successor = current = Tree_Find_PreNode(tree, item);
 	
@@ -319,15 +322,52 @@ bool Tree_DeleteItem(Tree *tree, const Item item)
 	{
 		if (NULL != (*current)->right)//右树有节点
 		{
+			successor = &((**current).right);//先转到右树
+			while ((*successor)->left != NULL && (*successor) != NULL)
+				successor = &((**successor).left);
 			
+			ptrtemp = *successor;
+			rabbish = *current;
+
+			*successor = (*successor)->right;
+
+			temp.left = (*current)->left;//暂存任务给第三方
+			temp.right = (*current)->right;
+
+			*current = ptrtemp;
+
+			(*current)->left = temp.left;
+			(*current)->right = temp.right;
+			
+			free(rabbish);
+			tree->size--;
 		}
 		else if (NULL != (*current)->left)//左树有节点
 		{
+			successor = &((**current).left);
+			while ((*successor)->right != NULL && (*successor) != NULL)
+				successor = &((*successor)->right);
 
+			ptrtemp = *successor;
+			rabbish = *current;
+
+			*successor = (*successor)->left;
+
+			temp.left = (*current)->left;//暂存任务给第三方
+			temp.right = (*current)->right;
+
+			*current = ptrtemp;
+
+			(*current)->left = temp.left;
+			(*current)->right = temp.right;
+
+			free(rabbish);
+			tree->size--;
 		}
 		else//都没节点
 		{
 			free(*current);
+			*current = NULL;
 			tree->size--;
 		}
 	}

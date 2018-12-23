@@ -16,8 +16,6 @@ int main(void)
 
 	Tree_Initializing(&head, cmp);
 
-	
-
 	while (1)
 	{
 		showmenue();
@@ -50,15 +48,23 @@ int main(void)
 			printf("Done.\n");
 			break;
 		case 5:
-			for (int i = 0; i < 1000; i++)
+			for (int i = 0; i <5; i++)
 			{
-				input.grade = randdata(0, 500000);
+				input.grade = randdata(0, 100);
 				Tree_AddItem(&head, input);
 			}
+			printf("Done.\n");
 			break;
 		case 6:
 			Tree_DeleteAll(&head);
 			break;
+		case 7:
+			printf("输入要删除项的分数: \n");
+			getitem(&input);
+			Tree_DeleteItem(&head, input);
+			printf("Done.\n");
+			break;
+
 		}
 		
 	}

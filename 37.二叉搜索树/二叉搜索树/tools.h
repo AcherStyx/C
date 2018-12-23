@@ -27,10 +27,10 @@ void showitem(Item item, int deep, int side, int branch)
 	switch (side)
 	{
 	case -1:
-		printf("┌ %-5d", item.grade);
+		printf("└ %-5d", item.grade);
 		break;
 	case 1:
-		printf("└ %-5d", item.grade);
+		printf("┌ %-5d", item.grade);
 		break;
 	case 0:
 		printf("%-5d", item.grade);
@@ -40,10 +40,10 @@ void showitem(Item item, int deep, int side, int branch)
 	switch (branch)
 	{
 	case -1:
-		printf("┘\n");
+		printf("┐\n");
 		break;
 	case 1:
-		printf("┐\n");
+		printf("┘\n");
 		break;
 	case 0:
 		printf("┤\n");
@@ -66,7 +66,7 @@ void minus(Item *item)
 
 void showmenue(void)
 {
-	printf("1.添加项目\n2.打印全部项目\n3.查找项目是否存在\n4.将函数应用于全部项目\n5.随机添加5个测试数据\n6.删除全部节点\n7.\n");
+	printf("1.添加项目\n2.打印全部项目\n3.查找项目是否存在\n4.将函数应用于全部项目\n5.随机添加5个测试数据\n6.删除全部节点\n7.删除给定节点\n");
 }
 
 /*

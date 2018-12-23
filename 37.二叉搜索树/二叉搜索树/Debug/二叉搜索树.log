@@ -1,9 +1,7 @@
 ﻿  drive.c
-e:\[工程项目]\[github]\clp\37.二叉搜索树\二叉搜索树\tree.h(155): warning C4013: “Tree_Search_PreNode”未定义；假设外部返回 int
-e:\[工程项目]\[github]\clp\37.二叉搜索树\二叉搜索树\tree.h(155): warning C4047: “=”:“Node **”与“int”的间接级别不同
 e:\[工程项目]\[github]\clp\37.二叉搜索树\二叉搜索树\tree.h(152): warning C4101: “cmp”: 未引用的局部变量
 e:\[工程项目]\[github]\clp\37.二叉搜索树\二叉搜索树\tree.h(212): warning C4020: “Tree_ShowAll_Recursion”: 实参太多
 e:\[工程项目]\[github]\clp\37.二叉搜索树\二叉搜索树\tree.h(50): warning C4716: “Tree_Initializing”: 必须返回一个值
 e:\[工程项目]\[github]\clp\37.二叉搜索树\二叉搜索树\tree.h(278): warning C4716: “Tree_Traverse”: 必须返回一个值
-drive.obj : error LNK2019: 无法解析的外部符号 _Tree_Search_PreNode，该符号在函数 _Tree_AddItem 中被引用
-E:\[工程项目]\[GitHub]\CLP\37.二叉搜索树\二叉搜索树\Debug\二叉搜索树.exe : fatal error LNK1120: 1 个无法解析的外部命令
+e:\[工程项目]\[github]\clp\37.二叉搜索树\二叉搜索树\tree.h(375): warning C4715: “Tree_DeleteItem”: 不是所有的控件路径都返回值
+  二叉搜索树.vcxproj -> E:\[工程项目]\[GitHub]\CLP\37.二叉搜索树\二叉搜索树\Debug\二叉搜索树.exe
