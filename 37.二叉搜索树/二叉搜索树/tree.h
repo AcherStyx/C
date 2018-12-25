@@ -10,12 +10,14 @@
 /*=====Tree常量=====*/
 //#define ITEMMAX 10000
 #define TREE_DEBUG_ON
+#define NAME_LEN 100
 //#define TREE_CHECK_REPEAT
 
 /*=====类型定义=====*/
 typedef struct item
 {
 	int grade;
+	char name[NAME_LEN];
 }Item;
 typedef struct node
 {
@@ -73,7 +75,7 @@ bool Tree_IsFull(const Tree * tree)
 }
 
 /*
->>>>>>>>>>搜索树
+>>>>>>>>>>搜索树（返回指向一个节点的地址）
 返回指向搜索到的项目所在的节点的地址（包括没有时，返回NULL）
 */
 static Node *Tree_Find(const Tree * tree, Item item)
@@ -138,6 +140,49 @@ static Node **Tree_Find_PreNode(Tree * tree, Item item)
 	}
 
 	return pre;
+}
+
+/*
+>>>>>>>>>>搜索树（递归）
+用于基于其他条件的搜索
+*/
+static Node * Tree_Search_Recursion(Node * current, Item *item, bool(*is_equal_search)(Item a, Item b))
+{
+	Node * temp;
+	
+	if (current == NULL)
+		return NULL;
+	else if (is_equal_search(current->item, *item))
+		return current;
+	else
+	{
+		if (NULL != (temp = Tree_Search_Recursion(current->left, item, is_equal_search)))
+			return temp;
+		else if (NULL != (temp = Tree_Search_Recursion(current->right, item, is_equal_search)))
+			return temp;
+		else
+			return NULL;
+	}
+}
+
+/*
+>>>>>>>>>>搜索树（储存要搜索的节点的其余信息到参数中）
+不按照二叉树的方式搜索，用于按不是基于建表时排序条件的条件搜索
+在找不到匹配的节点时，返回0，找到时返回1
+*/
+bool Tree_Search(Tree*tree, Item *item, bool(*is_equal_search)(Item a, Item b))
+{
+	Node *current;
+	
+	current = Tree_Search_Recursion(tree->root, item, is_equal_search);
+
+	if (current == NULL)
+	{
+		return false;
+	}
+	
+	*item = current->item;
+	return true;
 }
 
 /*
@@ -373,6 +418,9 @@ bool Tree_DeleteItem(Tree *tree, const Item item)
 	}
 
 }
+
+
+
 
 #	endif
 #endif

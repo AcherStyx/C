@@ -50,20 +50,34 @@ int main(void)
 		case 5:
 			for (int i = 0; i <5; i++)
 			{
+				for (int i = 0; i < 5; i++)
+				{
+					input.name[i] = randdata('a', 'z');
+				}
+				input.name[5] = '\0';
 				input.grade = randdata(0, 100);
 				Tree_AddItem(&head, input);
 			}
+			
+
 			printf("Done.\n");
 			break;
 		case 6:
 			Tree_DeleteAll(&head);
 			break;
 		case 7:
-			printf("输入要删除项的分数: \n");
+			printf("输入要删除项的分数: ");
 			getitem(&input);
 			Tree_DeleteItem(&head, input);
 			printf("Done.\n");
 			break;
+		case 8:
+			printf("输入要查找的分数: ");
+			scanf("%d", &input.grade);
+			if (Tree_Search(&head, &input, gradeequal))
+				showinfo(input);
+			else
+				printf("未找到该分数\n");
 
 		}
 		

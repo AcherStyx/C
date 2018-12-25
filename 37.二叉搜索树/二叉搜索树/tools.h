@@ -12,6 +12,8 @@ int cmp(Item a, Item b)
 
 void getitem(Item * item)
 {
+	printf("输入名字: ");
+	scanf("%s", item->name);
 	printf("输入分数: ");
 	scanf("%d", &item->grade);
 }
@@ -66,8 +68,36 @@ void minus(Item *item)
 
 void showmenue(void)
 {
-	printf("1.添加项目\n2.打印全部项目\n3.查找项目是否存在\n4.将函数应用于全部项目\n5.随机添加5个测试数据\n6.删除全部节点\n7.删除给定节点\n");
+	printf("===============\n");
+	printf("1.添加项目\n2.打印全部项目\n3.查找项目是否存在\n4.将函数应用于全部项目\n5.随机添加5个测试数据\n6.删除全部节点\n7.删除给定节点\n8.查找名字\n");
+	printf("===============\n");
 }
+
+bool nameequal(Item a, Item b)
+{
+	if (strcmp(a.name, b.name) == 0)
+		return 1;
+	else
+		return 0;
+}
+
+bool gradeequal(Item a, Item b)
+{
+	if (a.grade == b.grade)
+		return 1;
+	else
+		return 0;
+}
+
+void showinfo(Item a)
+{
+	printf("***********\n");
+	printf("姓名: %s\n", a.name);
+	printf("分数: %d\n", a.grade);
+	printf("***********\n");
+}
+
+
 
 /*
 bool Tree_AddItem(Tree * tree, Item item)

@@ -69,9 +69,9 @@ int slipt(int a[], int low, int high)
 void quicksort2(int a[], int len)
 {
 	int i, ii;
-	for (i = 0; i < len - 1; i++)
+	for (i = 1; i < len; i++)
 	{
-		for ( ii = 1; ii < len; ii++)
+		for (ii = 1; ii < len - i; ii++)
 		{
 			swap(a + ii - 1, a + ii);
 		}
