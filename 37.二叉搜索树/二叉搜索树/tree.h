@@ -419,7 +419,9 @@ bool Tree_DeleteItem(Tree *tree, const Item item)
 
 }
 
-
+#ifdef NKKKK
+	prin()
+#endif
 
 
 #	endif
