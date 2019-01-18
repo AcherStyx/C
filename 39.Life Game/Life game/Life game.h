@@ -4,7 +4,7 @@
 #include <time.h>
 
 #define ROW 25
-#define COL 25
+#define COL 100
 
 int num_count;
 bool (*World)[COL];
@@ -51,7 +51,7 @@ void LifeGame_CreateNewWorld(void)
 	World = malloc(sizeof(bool)*COL*ROW);
 	for (int ii = 0; ii < ROW; ii++)
 		for (int i = 0; i < COL; i++)
-			World[ii][i] = 0;
+			World[ii][i] = rand()%2;
 }
 
 static int LifeGame_Environment(int row,int col)

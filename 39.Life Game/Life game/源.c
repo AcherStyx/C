@@ -18,16 +18,17 @@ int main(void)
 	World[12][12] = 1;
 	
 	LifeGame_ShowWorld();
-	printf("%d", LifeGame_Environment(1, 1));
 	getchar();
 
-	for (int i = 0; i < 100; i++)
+	for (int i = 0; i < 10000; i++)
 	{
 		LifeGame_Refresh();
 		LifeGame_ShowWorld();
+		/*此处是每隔一秒输出一次的代码		
 		t=time(NULL);
 		while(t==time(NULL))
-			;
+			;*/
+		getchar();
 	}
 
 	return 0;
