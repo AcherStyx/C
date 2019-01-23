@@ -6,8 +6,22 @@
 #define ROW 25
 #define COL 100
 
-int num_count;
-bool (*World)[COL];
+static int LifeGame_seed = 1;
+static int num_count;
+static bool (*World)[COL];
+
+
+
+void LifeGame_SetRand(int seed)
+{
+	LifeGame_seed = seed;
+}
+
+static bool LifeGame_Rand(void)
+{
+	LifeGame_seed = (LifeGame_seed * 3 + 567647) / 2;
+	return LifeGame_seed % 2;
+}
 
 void LifeGame_ShowWorld(void)
 {
@@ -51,7 +65,7 @@ void LifeGame_CreateNewWorld(void)
 	World = malloc(sizeof(bool)*COL*ROW);
 	for (int ii = 0; ii < ROW; ii++)
 		for (int i = 0; i < COL; i++)
-			World[ii][i] = rand()%2;
+			World[ii][i] = LifeGame_Rand()%2;
 }
 
 static int LifeGame_Environment(int row,int col)

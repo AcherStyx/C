@@ -1,4 +1,3 @@
 ﻿  源.c
-e:\[工程项目]\[github]\clp\39.life game\life game\源.c(10): warning C4244: “函数”: 从“time_t”转换到“unsigned int”，可能丢失数据
 e:\[工程项目]\[github]\clp\39.life game\life game\源.c(9): warning C4101: “t”: 未引用的局部变量
   Life game.vcxproj -> E:\[工程项目]\[GitHub]\CLP\39.Life Game\Debug\Life game.exe

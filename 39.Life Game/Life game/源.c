@@ -7,17 +7,25 @@
 int main(void)
 {
 	long t;
-	srand(time(NULL));
+	int seed;
+
+	printf("Enter seed:");
+
+	if (scanf("%d", &seed))
+	{
+		getchar();
+		LifeGame_SetRand(seed);
+	}
+	else
+	{
+		return -1;
+	}
+
+
 	LifeGame_CreateNewWorld();
 
-	/*³õÊ¼×´Ì¬*/
-	World[11][10] = 1;
-	World[12][11] = 1;
-	World[10][12] = 1;
-	World[11][12] = 1;
-	World[12][12] = 1;
-	
 	LifeGame_ShowWorld();
+	printf("No. 0\n");
 	getchar();
 
 	for (int i = 0; i < 10000; i++)
