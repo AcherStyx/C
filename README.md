@@ -1,2 +1,3 @@
-# C Language Practise<br>
-## This repository has the programming I wrote while studying C<br>
+## C语言练习项目<br>
+包含基础性的测试、小程序和一些数据结构的抽象性头文件<br>
+次序排列比较随意，并非难度排序<br>
