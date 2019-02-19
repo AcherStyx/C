@@ -4,6 +4,7 @@
 #define SIZE 1000
 
 int rotate(char * in, int len, int n);
+void rotate_2(char * in, int len, int n);
 
 int main(void)
 {
@@ -15,7 +16,7 @@ int main(void)
 	printf("n: ");
 	scanf("%d", &n);
 
-	rotate(temp, strlen(temp), n);
+	rotate_2(temp, strlen(temp), n);
 
 	printf("O: %s",temp);
 
@@ -62,4 +63,22 @@ int rotate(char * in, int len, int n)
 			in[n*(count - 1) + ii] = temp;
 		}
 	}
+}
+
+void reverse(char * in, int len)
+{
+	char temp;
+	for (int i = 0; i < (len - len % 2) / 2; i++)
+	{
+		temp = in[i];
+		in[i] = in[len - 1 - i];
+		in[len - 1 - i] = temp;
+	}
+}
+
+void rotate_2(char * in, int len, int n)
+{
+	reverse(in, n);
+	reverse(in + n, len - n);
+	reverse(in, len);
 }
