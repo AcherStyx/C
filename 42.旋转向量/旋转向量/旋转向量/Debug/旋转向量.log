@@ -1,0 +1,4 @@
+﻿  源.c
+e:\[工程项目]\[github]\clp\42.旋转向量\旋转向量\旋转向量\源.c(27): warning C4101: “temp2”: 未引用的局部变量
+e:\[工程项目]\[github]\clp\42.旋转向量\旋转向量\旋转向量\源.c(65): warning C4716: “rotate”: 必须返回一个值
+  旋转向量.vcxproj -> E:\[工程项目]\[GitHub]\CLP\42.旋转向量\旋转向量\Debug\旋转向量.exe
