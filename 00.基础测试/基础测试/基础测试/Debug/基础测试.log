@@ -1,5 +1,3 @@
-﻿  源.c
-e:\[工程项目]\[github]\clp\00.基础测试\基础测试\基础测试\源.c(10): warning C4101: “name”: 未引用的局部变量
-e:\[工程项目]\[github]\clp\00.基础测试\基础测试\基础测试\源.c(11): warning C4101: “rank”: 未引用的局部变量
-e:\[工程项目]\[github]\clp\00.基础测试\基础测试\基础测试\list.h(27): warning C4716: “List_initializing”: 必须返回一个值
-  基础测试.vcxproj -> E:\[工程项目]\[GitHub]\CLP\00.基础测试\基础测试\Debug\基础测试.exe
+﻿  源.cpp
+e:\[工程项目]\[github]\c\00.基础测试\基础测试\基础测试\源.cpp(39): warning C4101: “m”: 未引用的局部变量
+  基础测试.vcxproj -> E:\[工程项目]\[GitHub]\C\00.基础测试\基础测试\Debug\基础测试.exe

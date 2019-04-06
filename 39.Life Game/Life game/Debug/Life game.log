@@ -1,3 +1,15 @@
 ﻿  源.c
-e:\[工程项目]\[github]\clp\39.life game\life game\源.c(9): warning C4101: “t”: 未引用的局部变量
-  Life game.vcxproj -> E:\[工程项目]\[GitHub]\CLP\39.Life Game\Debug\Life game.exe
+e:\[工程项目]\[github]\c\39.life game\life game\源.c(7): error C2061: 语法错误: 标识符“data”
+e:\[工程项目]\[github]\c\39.life game\life game\源.c(8): error C2143: 语法错误: 缺少“{”(在“*”的前面)
+e:\[工程项目]\[github]\c\39.life game\life game\源.c(10): error C2059: 语法错误:“}”
+e:\[工程项目]\[github]\c\39.life game\life game\源.c(12): error C2143: 语法错误: 缺少“{”(在“*”的前面)
+e:\[工程项目]\[github]\c\39.life game\life game\源.c(14): error C2143: 语法错误: 缺少“)”(在“*”的前面)
+e:\[工程项目]\[github]\c\39.life game\life game\源.c(14): error C2143: 语法错误: 缺少“{”(在“*”的前面)
+e:\[工程项目]\[github]\c\39.life game\life game\源.c(14): error C2059: 语法错误:“&”
+e:\[工程项目]\[github]\c\39.life game\life game\源.c(14): error C2059: 语法错误:“)”
+e:\[工程项目]\[github]\c\39.life game\life game\源.c(42): error C2143: 语法错误: 缺少“)”(在“*”的前面)
+e:\[工程项目]\[github]\c\39.life game\life game\源.c(42): error C2143: 语法错误: 缺少“{”(在“*”的前面)
+e:\[工程项目]\[github]\c\39.life game\life game\源.c(42): error C2059: 语法错误:“&”
+e:\[工程项目]\[github]\c\39.life game\life game\源.c(42): error C2059: 语法错误:“)”
+e:\[工程项目]\[github]\c\39.life game\life game\源.c(59): warning C4013: “init”未定义；假设外部返回 int
+e:\[工程项目]\[github]\c\39.life game\life game\源.c(60): warning C4013: “print”未定义；假设外部返回 int
