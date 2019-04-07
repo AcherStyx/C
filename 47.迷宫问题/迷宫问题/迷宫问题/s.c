@@ -47,9 +47,17 @@ bool solve(int migong[][10], int a, int b)
 	int check = 0;
 
 	check += solve(migong, a - 1, b);
+	if (check == 1)
+		return 1;
 	check += solve(migong, a, b - 1);
+	if (check == 1)
+		return 1;
 	check += solve(migong, a, b + 1);
+	if (check == 1)
+		return 1;
 	check += solve(migong, a + 1, b);
+	if (check == 1)
+		return 1;
 	if (check == 0)
 	{
 		index--;
