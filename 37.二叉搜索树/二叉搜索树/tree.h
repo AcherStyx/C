@@ -7,13 +7,13 @@
 #include <stdbool.h>
 #include <assert.h>
 
-/*=====Tree³£Á¿=====*/
+/*=====Treeï¿½ï¿½ï¿½ï¿½=====*/
 //#define ITEMMAX 10000
 #define TREE_DEBUG_ON
 #define NAME_LEN 100
 //#define TREE_CHECK_REPEAT
 
-/*=====ÀàÐÍ¶¨Òå=====*/
+/*=====ï¿½ï¿½ï¿½Í¶ï¿½ï¿½ï¿½=====*/
 typedef struct item
 {
 	int grade;
@@ -31,15 +31,15 @@ typedef struct tree
 	int size;
 }Tree;
 
-/*=====ITEM³£Á¿=====*/
+/*=====ITEMï¿½ï¿½ï¿½ï¿½=====*/
 #define NLENGTH 40
-static int(*compare)(Item a, Item b);//½¨Á¢¶þ²æÊ÷ËùÓÃµÄË³ÐòÓÉ¸Ãº¯Êý¾ö¶¨
+static int(*compare)(Item a, Item b);//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ãµï¿½Ë³ï¿½ï¿½ï¿½É¸Ãºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 
-/*=====½Ó¿Úº¯Êý=====*/
+/*=====ï¿½Ó¿Úºï¿½ï¿½ï¿½=====*/
 /*
->>>>>>>>>>³õÊ¼»¯Ê÷
-ÐèÒª´«Èë¹ØÓÚÈçºÎ¶ÔÊ÷ÖÐÔªËØ½øÐÐÅÅÐòµÄº¯Êý
-ÒÑ¾­³õÊ¼»¯ºÃµÄÊ÷£¬²»ÔÊÐíÔÙ´Î³õÊ¼»¯
+>>>>>>>>>>ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½
+ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î¶ï¿½ï¿½ï¿½ï¿½ï¿½Ôªï¿½Ø½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Äºï¿½ï¿½ï¿½?
+ï¿½Ñ¾ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½Ãµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ù´Î³ï¿½Ê¼ï¿½ï¿½
 */
 bool Tree_Initializing(Tree * tree, int(*HowToSort)(Item a, Item b))
 {
@@ -51,10 +51,10 @@ bool Tree_Initializing(Tree * tree, int(*HowToSort)(Item a, Item b))
 #endif
 }
 
-#	ifdef _TREE_INITIALIZED_//Î´³õÊ¼»¯Ê±²»ÔÊÐíµ÷ÓÃÆäÓàº¯Êý
+#	ifdef _TREE_INITIALIZED_//Î´ï¿½ï¿½Ê¼ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½àº¯ï¿½ï¿½
 
 /*
->>>>>>>>>>Ê÷¿Õ
+>>>>>>>>>>ï¿½ï¿½ï¿½ï¿½
 */
 bool Tree_IsEmpty(const Tree * tree)
 {
@@ -62,12 +62,12 @@ bool Tree_IsEmpty(const Tree * tree)
 }
 
 /*
->>>>>>>>>>Ê÷Âú
-ÔÚÃ»ÓÐÉè¶¨ITEMMAXÊ±Ê¼ÖÕ·µ»ØÕæ
+>>>>>>>>>>ï¿½ï¿½ï¿½ï¿½
+ï¿½ï¿½Ã»ï¿½ï¿½ï¿½è¶¨ITEMMAXÊ±Ê¼ï¿½Õ·ï¿½ï¿½ï¿½ï¿½ï¿½
 */
 bool Tree_IsFull(const Tree * tree)
 {
-#ifdef ITEMMAX  //ÔÊÐíÎÞ×î´óÏÞÖÆ
+#ifdef ITEMMAX  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?
 	return tree->size >= ITEMMAX;
 #else
 	return 1;
@@ -75,8 +75,8 @@ bool Tree_IsFull(const Tree * tree)
 }
 
 /*
->>>>>>>>>>ËÑË÷Ê÷£¨·µ»ØÖ¸ÏòÒ»¸ö½ÚµãµÄµØÖ·£©
-·µ»ØÖ¸ÏòËÑË÷µ½µÄÏîÄ¿ËùÔÚµÄ½ÚµãµÄµØÖ·£¨°üÀ¨Ã»ÓÐÊ±£¬·µ»ØNULL£©
+>>>>>>>>>>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Úµï¿½Äµï¿½Ö·ï¿½ï¿½?
+ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ÚµÄ½Úµï¿½Äµï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½NULLï¿½ï¿½
 */
 static Node *Tree_Find(const Tree * tree, Item item)
 {
@@ -96,7 +96,7 @@ static Node *Tree_Find(const Tree * tree, Item item)
 			break;
 		default:
 #ifdef TREE_DEBUG_ON
-			fprintf(stderr, "±È½Ïº¯Êý´æÔÚ´íÎó\n");
+			fprintf(stderr, "ï¿½È½Ïºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½ï¿½ï¿½\n");
 			assert(0);
 #endif
 			return NULL;
@@ -107,8 +107,8 @@ static Node *Tree_Find(const Tree * tree, Item item)
 }
 
 /*
->>>>>>>>>>ËÑË÷Ê÷£¨·µ»ØÖ¸Ïò´¢´æÒ»¸ö½ÚµãµÄÖ¸ÕëµÄµØÖ·£©
-¸øÌí¼Ó½ÚµãµÄº¯ÊýÊ¹ÓÃµÄ
+>>>>>>>>>>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ò´¢´ï¿½Ò»ï¿½ï¿½ï¿½Úµï¿½ï¿½Ö¸ï¿½ï¿½Äµï¿½Ö·ï¿½ï¿½
+ï¿½ï¿½ï¿½ï¿½ï¿½Ó½Úµï¿½Äºï¿½ï¿½ï¿½Ê¹ï¿½Ãµï¿½?
 */
 static Node **Tree_Find_PreNode(Tree * tree, Item item)
 {
@@ -132,7 +132,7 @@ static Node **Tree_Find_PreNode(Tree * tree, Item item)
 			break;
 		default:
 #ifdef TREE_DEBUG_ON
-			fprintf(stderr, "±È½Ïº¯Êý·µ»Ø´íÎó\n");
+			fprintf(stderr, "ï¿½È½Ïºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø´ï¿½ï¿½ï¿½\n");
 			assert(0);
 #endif
 			return NULL;
@@ -143,8 +143,8 @@ static Node **Tree_Find_PreNode(Tree * tree, Item item)
 }
 
 /*
->>>>>>>>>>ËÑË÷Ê÷£¨µÝ¹é£©
-ÓÃÓÚ»ùÓÚÆäËûÌõ¼þµÄËÑË÷
+>>>>>>>>>>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¹é£©
+ï¿½ï¿½ï¿½Ú»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 */
 static Node * Tree_Search_Recursion(Node * current, Item *item, bool(*is_equal_search)(Item a, Item b))
 {
@@ -166,9 +166,9 @@ static Node * Tree_Search_Recursion(Node * current, Item *item, bool(*is_equal_s
 }
 
 /*
->>>>>>>>>>ËÑË÷Ê÷£¨´¢´æÒªËÑË÷µÄ½ÚµãµÄÆäÓàÐÅÏ¢µ½²ÎÊýÖÐ£©
-²»°´ÕÕ¶þ²æÊ÷µÄ·½Ê½ËÑË÷£¬ÓÃÓÚ°´²»ÊÇ»ùÓÚ½¨±íÊ±ÅÅÐòÌõ¼þµÄÌõ¼þËÑË÷
-ÔÚÕÒ²»µ½Æ¥ÅäµÄ½ÚµãÊ±£¬·µ»Ø0£¬ÕÒµ½Ê±·µ»Ø1
+>>>>>>>>>>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½Ä½Úµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð£ï¿½?
+ï¿½ï¿½ï¿½ï¿½ï¿½Õ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä·ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú°ï¿½ï¿½ï¿½ï¿½Ç»ï¿½ï¿½Ú½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ï¿½ï¿½ï¿½Ò²ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½Ä½Úµï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?0ï¿½ï¿½ï¿½Òµï¿½Ê±ï¿½ï¿½ï¿½ï¿½1
 */
 bool Tree_Search(Tree*tree, Item *item, bool(*is_equal_search)(Item a, Item b))
 {
@@ -186,9 +186,9 @@ bool Tree_Search(Tree*tree, Item *item, bool(*is_equal_search)(Item a, Item b))
 }
 
 /*
->>>>>>>>>>Ìí¼Ó½Úµã
-ÔÚÖØ¸´Ê±²»Ìí¼Ó
-ÔÚ²éµ½ÖØ¸´Ê±¿ÉÒÔÑ¡ÔñÖÕÖ¹³ÌÐò£¬Ö»Òª¸ü¸Ä TREE_CHECK_REPEAT ¶¨Òå
+>>>>>>>>>>ï¿½ï¿½ï¿½Ó½Úµï¿½
+ï¿½ï¿½ï¿½Ø¸ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ï¿½Ú²éµ½ï¿½Ø¸ï¿½Ê±ï¿½ï¿½ï¿½ï¿½Ñ¡ï¿½ï¿½ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½Ö»Òªï¿½ï¿½ï¿½ï¿½ TREE_CHECK_REPEAT ï¿½ï¿½ï¿½ï¿½
 */
 bool Tree_AddItem(Tree * tree, const Item item)
 {
@@ -196,22 +196,22 @@ bool Tree_AddItem(Tree * tree, const Item item)
 	Node * temp;
 	int cmp;
 
-	//ÕÒµ½Î»ÖÃ£¬ÏÈÑ°ÕÒ£¬ÒÔ·ÀÖ¹½ÚµãÖØ¸´Ê±¼ÌÐø·ÖÅäÄÚ´æ
+	//ï¿½Òµï¿½Î»ï¿½Ã£ï¿½ï¿½ï¿½Ñ°ï¿½Ò£ï¿½ï¿½Ô·ï¿½Ö¹ï¿½Úµï¿½ï¿½Ø¸ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½
 	current = Tree_Find_PreNode(tree, item);
 	if ((*current) != NULL)
 	{
 #ifdef TREE_CHECK_REPEAT
-		fprintf(stderr, "ÔªËØÖØ¸´\n");
+		fprintf(stderr, "Ôªï¿½ï¿½ï¿½Ø¸ï¿½\n");
 		assert(0);
 #endif
 		return false;
 	}
-	//·ÖÅäÄÚ´æ²¢³õÊ¼»¯½Úµã
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Ú´æ²¢ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½Úµï¿½
 	temp = (Node *)malloc(sizeof(Node));
 	if (temp == NULL)
 	{
 #ifdef TREE_DEBUG_ON
-		fprintf(stderr, "ÄÚ´æ·ÖÅäÊ§°Ü\n");
+		fprintf(stderr, "ï¿½Ú´ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½\n");
 		assert(0);
 #endif
 		return false;
@@ -220,7 +220,7 @@ bool Tree_AddItem(Tree * tree, const Item item)
 	temp->right = NULL;
 	temp->item = item;
 
-	//²åÈë
+	//ï¿½ï¿½ï¿½ï¿½
 	(*current) = temp;
 	tree->size++;
 
@@ -228,8 +228,8 @@ bool Tree_AddItem(Tree * tree, const Item item)
 }
 
 /*
->>>>>>>>>>µÝ¹é´òÓ¡£¨ÄÚ²¿º¯Êý£©
-¹¤¾ßÐÔº¯Êý£¬ÄÚ²¿Á´½Ó
+>>>>>>>>>>ï¿½Ý¹ï¿½ï¿½Ó¡ï¿½ï¿½ï¿½Ú²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?
+ï¿½ï¿½ï¿½ï¿½ï¿½Ôºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú²ï¿½ï¿½ï¿½ï¿½ï¿½
 */
 static void Tree_ShowAll_Recursion(Node * node, void(*ShowItem)(Item item, int deep, int side, int branch), int deep, int side)
 {
@@ -246,9 +246,9 @@ static void Tree_ShowAll_Recursion(Node * node, void(*ShowItem)(Item item, int d
 }
 
 /*
->>>>>>>>>>´òÓ¡Ê÷
-ÐèÒª´«Èë´òÓ¡º¯Êý
-´òÓ¡º¯ÊýÒª°üº¬Õë¶Ô²»Í¬µÄ²ãÈçºÎ´òÓ¡ÏîÄ¿
+>>>>>>>>>>ï¿½ï¿½Ó¡ï¿½ï¿½
+ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½Ó¡ï¿½ï¿½ï¿½ï¿½?
+ï¿½ï¿½Ó¡ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô²ï¿½Í¬ï¿½Ä²ï¿½ï¿½ï¿½Î´ï¿½Ó¡ï¿½ï¿½Ä¿
 */
 void Tree_ShowAll(const Tree * tree, void(*ShowItem)(Item item, int deep, int side, int branch))
 {
@@ -260,10 +260,10 @@ void Tree_ShowAll(const Tree * tree, void(*ShowItem)(Item item, int deep, int si
 }
 
 /*
->>>>>>>>>>¶þ²æ¼ìË÷Õû¸öÊ÷
-µÚ¶þ¸ö²ÎÊýÎªÒªËÑË÷µØÏîÄ¿£¬ËÑË÷µ½ºó»á°ÑÕû¸öitemµÄÄÚÈÝ¸´ÖÆµ½¸ÃµØÖ·Ö¸ÏòµÄ´¢´æÎ»ÖÃÖÐ
-¼ìË÷ÒÀ¾Ý³õÊ¼»¯ÓÃµÄ±È½Ïº¯Êý£¬Ö»ÄÜ¼ì²é¸Ã±È½Ïº¯Êý±È½ÏµÄÏî
-¼ì²éµ½ÏîÄ¿Ê±·µ»Ø1£¬·ñÔò·µ»Ø0
+>>>>>>>>>>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?
+ï¿½Ú¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÎªÒªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½itemï¿½ï¿½ï¿½ï¿½ï¿½Ý¸ï¿½ï¿½Æµï¿½ï¿½Ãµï¿½Ö·Ö¸ï¿½ï¿½Ä´ï¿½ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½?
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý³ï¿½Ê¼ï¿½ï¿½ï¿½ÃµÄ±È½Ïºï¿½ï¿½ï¿½ï¿½ï¿½Ö»ï¿½Ü¼ï¿½ï¿½Ã±È½Ïºï¿½ï¿½ï¿½ï¿½È½Ïµï¿½ï¿½ï¿½
+ï¿½ï¿½éµ½ï¿½ï¿½Ä¿Ê±ï¿½ï¿½ï¿½ï¿½?1ï¿½ï¿½ï¿½ï¿½ï¿½ò·µ»ï¿½0
 */
 bool Tree_BSearch(const Tree * tree, Item * item)
 {
@@ -288,7 +288,7 @@ bool Tree_BSearch(const Tree * tree, Item * item)
 				break;
 			default:
 #ifdef TREE_DEBUG_ON
-				fprintf(stderr, "±È½Ïº¯Êý·µ»Ø´íÎó\n");
+				fprintf(stderr, "ï¿½È½Ïºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø´ï¿½ï¿½ï¿½\n");
 				assert(0);
 #endif
 				return 0;
@@ -300,8 +300,8 @@ bool Tree_BSearch(const Tree * tree, Item * item)
 }
 
 /*
->>>>>>>>>>µÝ¹é±éÀú£¨ÄÚ²¿º¯Êý£©
-ÄÚ²¿Á´½Ó
+>>>>>>>>>>ï¿½Ý¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?
+ï¿½Ú²ï¿½ï¿½ï¿½ï¿½ï¿½
 */
 static void Tree_Traverse_Recursion(Node * node, void(*change)(Item *item))
 {
@@ -314,8 +314,8 @@ static void Tree_Traverse_Recursion(Node * node, void(*change)(Item *item))
 }
 
 /*
->>>>>>>>>>±éÀúÊ÷
-½«º¯Êý×÷ÓÃÓÚÃ¿Ò»¸öÊ÷µÄ½Úµã
+>>>>>>>>>>ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¿Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ä½Úµï¿½
 */
 bool Tree_Traverse(Tree * tree, void(*change)(Item *item))
 {
@@ -323,8 +323,8 @@ bool Tree_Traverse(Tree * tree, void(*change)(Item *item))
 }
 
 /*
->>>>>>>>>>µÝ¹éÉ¾³ý½Úµã£¨ÄÚ²¿º¯Êý£©
-ÄÚ²¿Á´½Ó
+>>>>>>>>>>ï¿½Ý¹ï¿½É¾ï¿½ï¿½ï¿½Úµã£¨ï¿½Ú²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ï¿½Ú²ï¿½ï¿½ï¿½ï¿½ï¿½
 */
 static void Tree_DeleteAll_Recursion(Node *node)
 {
@@ -337,7 +337,7 @@ static void Tree_DeleteAll_Recursion(Node *node)
 }
 
 /*
->>>>>>>>>>É¾³ýÈ«²¿½Úµã
+>>>>>>>>>>É¾ï¿½ï¿½È«ï¿½ï¿½ï¿½Úµï¿½
 */
 void Tree_DeleteAll(Tree*tree)
 {
@@ -347,7 +347,7 @@ void Tree_DeleteAll(Tree*tree)
 }
 
 /*
->>>>>>>>>>É¾³ýÖ¸¶¨½Úµã
+>>>>>>>>>>É¾ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½Úµï¿½
 */
 bool Tree_DeleteItem(Tree *tree, const Item item)
 {
@@ -365,9 +365,9 @@ bool Tree_DeleteItem(Tree *tree, const Item item)
 	}
 	else
 	{
-		if (NULL != (*current)->right)//ÓÒÊ÷ÓÐ½Úµã
+		if (NULL != (*current)->right)//ï¿½ï¿½ï¿½ï¿½ï¿½Ð½Úµï¿½
 		{
-			successor = &((**current).right);//ÏÈ×ªµ½ÓÒÊ÷
+			successor = &((**current).right);//ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			while ((*successor)->left != NULL && (*successor) != NULL)
 				successor = &((**successor).left);
 			
@@ -376,7 +376,7 @@ bool Tree_DeleteItem(Tree *tree, const Item item)
 
 			*successor = (*successor)->right;
 
-			temp.left = (*current)->left;//ÔÝ´æÈÎÎñ¸øµÚÈý·½
+			temp.left = (*current)->left;//ï¿½Ý´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?
 			temp.right = (*current)->right;
 
 			*current = ptrtemp;
@@ -387,7 +387,7 @@ bool Tree_DeleteItem(Tree *tree, const Item item)
 			free(rabbish);
 			tree->size--;
 		}
-		else if (NULL != (*current)->left)//×óÊ÷ÓÐ½Úµã
+		else if (NULL != (*current)->left)//ï¿½ï¿½ï¿½ï¿½ï¿½Ð½Úµï¿½
 		{
 			successor = &((**current).left);
 			while ((*successor)->right != NULL && (*successor) != NULL)
@@ -398,7 +398,7 @@ bool Tree_DeleteItem(Tree *tree, const Item item)
 
 			*successor = (*successor)->left;
 
-			temp.left = (*current)->left;//ÔÝ´æÈÎÎñ¸øµÚÈý·½
+			temp.left = (*current)->left;//ï¿½Ý´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½?
 			temp.right = (*current)->right;
 
 			*current = ptrtemp;
@@ -409,7 +409,7 @@ bool Tree_DeleteItem(Tree *tree, const Item item)
 			free(rabbish);
 			tree->size--;
 		}
-		else//¶¼Ã»½Úµã
+		else//ï¿½ï¿½Ã»ï¿½Úµï¿½
 		{
 			free(*current);
 			*current = NULL;
