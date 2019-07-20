@@ -1,6 +1,0 @@
-﻿  源.c
-e:\[工程项目]\[github]\clp\44.散列表\散列表\散列表\hash_list.h(41): warning C4047: “初始化”:“int”与“char *”的间接级别不同
-  正在生成代码
-e:\[工程项目]\[github]\clp\44.散列表\散列表\散列表\源.c(20): error C4700: 使用了未初始化的局部变量“list”
-  All 11 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
-LINK : fatal error LNK1257: 代码生成失败

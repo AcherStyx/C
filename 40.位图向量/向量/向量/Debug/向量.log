@@ -1,5 +1,0 @@
-﻿  sourse.c
-e:\[工程项目]\[github]\clp\40.位图向量\向量\向量\sourse.c(13): warning C4244: “函数”: 从“time_t”转换到“unsigned int”，可能丢失数据
-e:\[工程项目]\[github]\clp\40.位图向量\向量\向量\sourse.c(14): warning C4013: “testdata”未定义；假设外部返回 int
-e:\[工程项目]\[github]\clp\40.位图向量\向量\向量\sourse.c(74): warning C4244: “=”: 从“__int64”转换到“int”，可能丢失数据
-  向量.vcxproj -> E:\[工程项目]\[GitHub]\CLP\40.位图向量\向量\Debug\向量.exe

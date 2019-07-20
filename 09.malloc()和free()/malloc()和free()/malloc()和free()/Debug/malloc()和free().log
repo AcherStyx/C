@@ -1,4 +1,0 @@
-﻿  源.c
-e:\[工程项目]\[github]\clp\9.malloc()和free()\malloc()和free()\malloc()和free()\源.c(9): warning C4013: “malloc”未定义；假设外部返回 int
-e:\[工程项目]\[github]\clp\9.malloc()和free()\malloc()和free()\malloc()和free()\源.c(27): warning C4013: “free”未定义；假设外部返回 int
-  malloc()和free().vcxproj -> E:\[工程项目]\[GitHub]\CLP\9.malloc()和free()\malloc()和free()\Debug\malloc()和free().exe
